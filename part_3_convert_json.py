@@ -36,7 +36,7 @@ def make_cc_level_pack_from_json(json_data):
             elif field_data['field_name'] == "monster":
                 monster_coords_list = []
                 for coords in field_data['value']:
-                    current_coord = cc_classes.CCCoordinate(coords[0], coords[1])
+                    current_coord = cc_classes.CCCoordinate(coords['x'], coords['y'])
                     monster_coords_list.append(current_coord)
                 monster_field = cc_classes.CCMonsterMovementField(monster_coords_list)
                 level.optional_fields.append(monster_field)
@@ -44,7 +44,7 @@ def make_cc_level_pack_from_json(json_data):
             elif field_data['field_name'] == "trap":
                 trap_coords_list = []
                 for coords in field_data['value']:
-                    trap_control = cc_classes.CCTrapControl(coords[0], coords[1], coords[2], coords[3])
+                    trap_control = cc_classes.CCTrapControl(coords['bx'], coords['by'], coords['tx'], coords['ty'])
                     trap_coords_list.append(trap_control)
                 trap_field = cc_classes.CCTrapControlsField(trap_coords_list)
                 level.optional_fields.append(trap_field)
@@ -52,7 +52,7 @@ def make_cc_level_pack_from_json(json_data):
             elif field_data['field_name'] == "cloning_machine":
                 cloning_coords_list = []
                 for coords in field_data['value']:
-                    cloning_control = cc_classes.CCCloningMachineControl(coords[0], coords[1], coords[2], coords[3])
+                    cloning_control = cc_classes.CCCloningMachineControl(coords['bx'], coords['by'], coords['tx'], coords['ty'])
                     cloning_coords_list.append(cloning_control)
                 cloning_field = cc_classes.CCCloningMachineControlsField(cloning_coords_list)
                 level.optional_fields.append(cloning_field)
